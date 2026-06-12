@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小泉健 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>小泉健 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. 合同会社DMM.com</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">本部長・事業責任者候補/オープンポジション</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">合同会社DMM.com</div>
+  <div class="co-url"><a href="https://dmm-corp.com/" target="_blank">https://dmm-corp.com/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>106-0032　東京都港区六本木三丁目2番1号住友不動産六本木グランドタワーDMMグループ総合受付24階</td></tr><tr><th>設立</th><td>1998年</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>DMMグループの豊富なリソースを最大限に活用できる</li><li>大企業の安定感を持ちながらも、スタートアップのようなスピード感で事業を展開</li><li>常識にとらわれない柔軟な発想と革新的な思考で、力強く非連続的な成長を実現できる環境</li><li>ご自身で手をあげれば領域・職域問わず主体的に関わることができ、自らキャリアを創れる文化</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">1998年の創業以来、多岐にわたる事業を展開し、現在は16領域60以上のサービスを運営しています。動画配信や電子書籍、アニメなどの多様なエンタメサービスに加え、3DプリントやEV充電などのハードウェア分野、web3やAIなど最先端のテクノロジーを取り入れた事業など、様々な事業を手掛けています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>1998年の創業以来、多岐にわたる事業を展開し、現在は16領域60以上のサービスを運営しています。動画配信や電子書籍、アニメなどの多様なエンタメサービスに加え、3DプリントやEV充電などのハードウェア分野、web3やAIなど最先端のテクノロジーを取り入れた事業など、様々な事業を手掛けています。</p><p>総合サービスサイト「DMM.com」は会員数4,507万人。2022年にはサブスクリプション会員システムの「DMMプレミアム」を立ち上げ、あらゆるエンタメ体験をシームレスにつなぐ「マルチエンタメ・プラットフォーム」の創造を目指しています。</p><p>主には動画配信事業・FX/証券事業・オンラインゲームの3つがDMMの収益を支える柱となっていて、今後も新たな柱となる収益源を作る為、新規事業開発や既存事業の再建を進めています。</p><p>今、DMMが力を入れているのは、まさに次の成長を生み出す仕組みづくりです。これまでの強みを活かしながら、エコシステムの構築・AIの活用・海外展開を軸に、次のステージへ進もうとしています。</p><p>例えば、既存ビジネスの成長鈍化を打破するため、外部パートナーと連携し、プラットフォームの拡張を進めています。また、国内市場の限界を見据え、日本のエンタメやデジタルコンテンツを海外市場へ展開し、新たな収益基盤を築いていくフェーズにあります。</p><p>さらに、急速に進化するAIを活用し、DMM独自のサービス開発やアライアンス事業を強化。この変革期に、戦略を描き、実行まで推進できる事業企画メンバーを求めています。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 本部長・事業責任者候補/オープンポジション</div>
+          <div class="job-preview">新たな収益の柱を生み出す事業家として、新規事業創出や既存事業の成長を経営視点で管理・運営</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>■事業/ポジションの説明</strong></p><p>DMM.com Groupでは現在60個以上の事業を多角的に展開しており、うち動画配信事業・FX/証券事業・オンラインゲームが3つがDMMの収益を支える柱となっている。DMM.com Groupは新たな柱となる収益源を作る為、新規事業開発や既存事業の再建を進めている。</p><p><strong>▼主な経営課題</strong></p><ul><li>次の事業を創り続ける</li><li>新たな収益源の確立</li><li>動画配信事業・FX/証券事業・オンラインゲーム事業・エナジー事業に次ぐ収益の柱をつくること</li><li>さらにその次その次と、収益の柱になりうる事業が生まれやすくなる仕組みの定着</li><li>経営レイヤーへの抜擢、経営層が生まれる意図的に非連続を経験させるタフアサインメント</li><li>個別事業の成長実現</li><li>再現性を高める経営管理の追求</li><li>本部単位の予実管理の精緻化および責任設計</li><li>ミドル層の強化</li><li>現場が育つ権限＆責任範囲の委譲</li><li>ボトム層の自然淘汰の促進</li><li>技術負債からの脱却</li><li>マイクロサービス化による個別事業における挑戦機会の増加</li></ul><p><strong>■業務内容</strong></p><p>現在、新たな収益の柱を生み出す為に、外部から有力な人材の採用を積極的に行っています。</p><p><strong>▼新規事業創出（事業家）できる人材</strong></p><ul><li>DMMのサービスに興味がある方やDMMで実現したい事業案がある方も歓迎</li><li>新規・既存事業をスケールさせる再現性を持った経営が出来る人材</li><li>事業創出・M&A</li><li>事業戦略</li><li>組織マネジメント</li><li>経営管理</li><li>マーケティング</li><li>財務・法務・人事</li></ul><p>ご応募いただいた方については、面談の上、幅広くポジション検討させていただきます。</p><p><strong>■配属先</strong></p><p>CEO亀山管掌の組織、COO村中管掌の組織の中で、現場ニーズと候補者の特性に合わせて調整します。</p><p><strong>【必須スキル・経験】</strong></p><p><span class='tag tag-must'>MUST</span> 例えば以下のようなご経験・スキルがある方。</p><ul><li>経営として事業や組織の非連続な将来を描いて実現した経験</li><li>事業開発の経験</li><li>人材採用や資金の調達など経営に必要なリソースなど、外部から取り入れた経験がある</li><li>組織や企業のビジョンを伝達する能力、部門や企業としての方向性を考えられる</li><li>ネットワーキング力に優れ、外部の知見を借りる力がある</li><li>業務上の高度な専門性や、既存社員にはない突出したスキル・能力がある</li></ul><p><strong>求める人物像</strong></p><ul><li>目的志向</li><li>相互支援</li><li>当事者意識</li><li>スタンスを取る</li><li>コトに向かう/ぶれない</li><li>実行あるのみ　→アドバイザリー的な人材はNG！手足動かしながらことに迎える人材。</li><li>アンラーンと継続的な学習</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://dmm-corp.com/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://dmm-corp.com/business/" target="_blank">📖 事業内容</a><a class="lbtn lbtn-out" href="https://dmm-corp.com/people/column/kameyama-keishi" target="_blank">👤 社長インタビュー</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが小泉健 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
